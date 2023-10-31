@@ -20,21 +20,62 @@ For every scenario described below we provide two scripts:
 
 no encryption
 
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `disable`
+
 ## ssl
 
 server only allows SSL connections.
+
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `require`
 
 ## verify-server-cert
 
 server only allows SSL connections. client verifies the server certificate.
 
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `verify-full`
+- TLS/SSL Root Certificate: paste the content from `certs/ca_server.crt`
+
 ## verify-client-cert
 
 server only allows SSL connections, with client certificates provided.
 
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `require`
+- TLS/SSL Client Certificate: paste content from `certs/client.crt`
+- TLS/SSL Client Key: paste content from `certs/client.key`
+
 ## verify-both-certs
 
 server only allows SSL connections, with client certificates provided. client verifies the server certificate.
+
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `verify-full`
+- TLS/SSL Root Certificate: paste the content from `certs/ca_server.crt`
+- TLS/SSL Client Certificate: paste content from `certs/client.crt`
+- TLS/SSL Client Key: paste content from `certs/client.key`
 
 # docs
 
