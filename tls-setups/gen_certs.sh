@@ -6,6 +6,10 @@ openssl x509 -req -in certs/ca_server.csr -days 3650 -extfile /opt/homebrew/etc/
 openssl req -new -nodes -out certs/server.csr -keyout certs/server.key -subj "/CN=localhost" -addext "subjectAltName = DNS:localhost"
 openssl x509 -req -in certs/server.csr -days 365 -CA certs/ca_server.crt -CAkey certs/ca_server.key -CAcreateserial -copy_extensions copy -ext subjectAltName -out certs/server.crt
 
+# this server cert intentionally has an incorrect hostname
+openssl req -new -nodes -out certs/server_wronghost.csr -keyout certs/server_wronghost.key -subj "/CN=example.com" -addext "subjectAltName = DNS:example.com"
+openssl x509 -req -in certs/server_wronghost.csr -days 365 -CA certs/ca_server.crt -CAkey certs/ca_server.key -CAcreateserial -copy_extensions copy -ext subjectAltName -out certs/server_wronghost.crt
+
 openssl req -new -nodes -out certs/ca_client.csr -keyout certs/ca_client.key -subj "/CN=ca_client"
 openssl x509 -req -in certs/ca_client.csr -days 3650 -extfile /opt/homebrew/etc/openssl@3/openssl.cnf -extensions v3_ca -signkey certs/ca_client.key -out certs/ca_client.crt
 
