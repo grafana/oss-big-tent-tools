@@ -40,7 +40,9 @@ grafana:
 
 ## verify-server-cert
 
-server only allows SSL connections. client verifies the server certificate.
+server only allows SSL connections. client verifies the server certificate (both the certificate chain, and the hostname in the certificate)
+
+NOTE: you need to connect to the database with the url `localhost`
 
 grafana:
 
@@ -65,7 +67,9 @@ grafana:
 
 ## verify-both-certs
 
-server only allows SSL connections, with client certificates provided. client verifies the server certificate.
+server only allows SSL connections, with client certificates provided. client verifies the server certificate (both the certificate chain, and the hostname in the certificate)
+
+NOTE: you need to connect to the database with the url `localhost`
 
 grafana:
 
