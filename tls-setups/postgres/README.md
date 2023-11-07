@@ -38,9 +38,23 @@ grafana:
 - Password: `password`
 - TLS/SSL Mode: `require`
 
+## verify-server-cert-ignore-host
+
+server only allows SSL connections. client verifies the server certificate's certificate chain. it does not verify the hostname in the certificate.
+
+grafana:
+
+- Database name: `db`
+- Username: `john`
+- Password: `password`
+- TLS/SSL Mode: `verify-ca`
+- TLS/SSL Root Certificate: paste the content from `certs/ca_server.crt`
+
 ## verify-server-cert
 
-server only allows SSL connections. client verifies the server certificate.
+server only allows SSL connections. client verifies the server certificate (both the certificate chain, and the hostname in the certificate)
+
+NOTE: you need to connect to the database with the url `localhost`
 
 grafana:
 
@@ -65,7 +79,9 @@ grafana:
 
 ## verify-both-certs
 
-server only allows SSL connections, with client certificates provided. client verifies the server certificate.
+server only allows SSL connections, with client certificates provided. client verifies the server certificate (both the certificate chain, and the hostname in the certificate)
+
+NOTE: you need to connect to the database with the url `localhost`
 
 grafana:
 
